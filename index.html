@@ -8,16 +8,27 @@
     <title>Document</title>
 </head>
 <body>
+    <div id="controls">
+        <label for="number">Enter number</label>
+        <input type="text" id="number">
+        <label for="speed">Select speed</label>
+        <select name="speed" id="speed">
+            <option value="0">Real</option>
+            <option value="10">x10</option>
+            <option value="100">x100</option>
+            <option value="1000">x1000</option>
+            <option value="10000">x10000</option>
+        </select>
+        <button id="play">Play</button>
+    </div>
     <div class="wrapper">
         <canvas id='canvas1' height="50" width="1300"></canvas>
-        <button id="start1">Start</button>
     </div>
     <div class="wrapper">
         <canvas id='canvas2' height="50" width="1300"></canvas>
-        <button id="start2">Start</button>
     </div>
 </body>
-<script src="index.js"></script>
 <script type='module' src="linear.js"></script>
-<script src="binary.js"></script>
+<script type='module' src="binary.js"></script>
+<script type='module' src="index.js"></script>
 </html>

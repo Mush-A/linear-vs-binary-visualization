@@ -8,7 +8,9 @@ let bar = context;
     bar.fillStyle = 'black';
     bar.fillRect(0, CH/2 - 25, CW, 50);
 
-const binary = async (num, epsilon) => {
+const binary = async (num, speed) => {
+    const epsilon = 0.01;
+
     let low = 0.0
     let high = Math.max(1.0, num) 
     let iterations = 0;
@@ -21,6 +23,14 @@ const binary = async (num, epsilon) => {
         bar.fillStyle = 'black';
         bar.fillRect(0, CH/2 - 25, CW, 50); 
 
+        point.fillStyle = 'white';
+
+        if (num >= 1) {
+            point.fillRect(ans*(CW/num), CH/2 - 25, 2, 50)
+        } else {
+            point.fillRect(ans*(CW), CH/2 - 25, 2, 50)
+        }
+
         if (ans**2 > num) {
             high = ans
         } else {
@@ -28,19 +38,11 @@ const binary = async (num, epsilon) => {
         }
 
         ans = (low + high)/2
-
-        point.fillStyle = 'white';
-
-        if (num >= 1) {
-            point.fillRect(ans*(CW/num), CH/2 - 25, 1, 50)
-        } else {
-            point.fillRect(ans*(CW), CH/2 - 25, 1, 50)
-        }
         
         iterations++;
-        await new Promise(r => setTimeout(r, 1));
+        await new Promise(r => setTimeout(r, speed));
     }
     return {ans: ans, iterations: iterations};
 }
 
-document.getElementById('start2').addEventListener('click', () => {binary(0.88888, 0.01).then(result => console.log(result))})
+export default binary;
