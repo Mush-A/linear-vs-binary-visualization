@@ -10,10 +10,10 @@ button.addEventListener('click', async () => {
     let speed  = document.getElementById('speed').value;
     speed  = Number.parseInt(speed);
 
-    console.log(number, speed)
     if (number && speed) {
-        await linear(number, speed);
-        await binary(number, speed);
+        let b = await binary(number, speed);
+        let l = await linear(number, speed);
+        console.log('linear', l,'binary', b)
     } else {
         alert('Please enter a number')
     }
